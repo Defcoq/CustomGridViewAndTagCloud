@@ -93,5 +93,16 @@ namespace CustomGridViewAndTagCloud.Models
 
             return songs;
         }
+
+        public List<Artist> GetAllArtists()
+        {
+
+            List<Artist> artists = new List<Artist>();
+            for (int i = 1; i < 30; i++)
+            {
+                artists.Add(new Artist() { UserName= "Artist_" +i, AvatarUrlSample= "https://i.pravatar.cc/150?img="+i , Country="Country_"+i, ProfileViews= i});
+            }
+            return artists;
+        }
     }
 }

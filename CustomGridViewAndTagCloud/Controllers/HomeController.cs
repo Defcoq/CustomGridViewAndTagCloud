@@ -12,7 +12,8 @@ namespace CustomGridViewAndTagCloud.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new DataContext().GetAllArtists();
+            return View("Index", model);
         }
 
         public IActionResult Privacy()

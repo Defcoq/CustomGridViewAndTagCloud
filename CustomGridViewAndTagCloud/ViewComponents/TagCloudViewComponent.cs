@@ -9,16 +9,16 @@ namespace CustomGridViewAndTagCloud.ViewComponents
 {
     public class TagCloudViewComponent : ViewComponent
     {
-        private readonly MoBContext _context;
-        public TagCloudViewComponent(MoBContext dbcontext)
+        private readonly DataContext _context;
+        public TagCloudViewComponent()
         {
-            _context = dbcontext;
+            _context = new DataContext(); ;
         }
 
         public IViewComponentResult Invoke()
         {
-            var items = (from songs in _context.Songs
-                         join genres in _context.GenreLookUps on songs.GenreId equals
+            var items = (from songs in _context.GetSong()
+                         join genres in _context.GetAllGenre() on songs.GenreId equals
                          genres.GenreLookUpId
                          where songs.GenreId.HasValue
                          select new { genres.GenreName, songs.GenreId }).ToList();

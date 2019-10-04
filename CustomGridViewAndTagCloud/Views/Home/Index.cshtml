@@ -1,8 +1,21 @@
-﻿@{
+﻿@model IList<Artist>
+
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Tag helper and view component inside a container</h1>
+This is an example of a Tag Cloud created using a ViewComponent and you'll see the most music genre people are voting in this web site
+<h2>Tag Cloud with view component</h2>
+<div class="row">
+    <div class="col-lg-5">
+        @await Component.InvokeAsync("TagCloud");
+    </div>
 </div>
+<br />
+<br />
+
+<h2>DataList with tag helper</h2>
+<column-list asp-number-of-columns="3"
+             asp-for="@Model"
+             asp-view-component="ArtistCard"></column-list>
+
